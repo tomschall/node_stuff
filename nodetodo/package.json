@@ -1,0 +1,17 @@
+{
+  "name": "nodetodo",
+  "version": "1.0.0",
+  "description": "Simple Todo Application ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thomas Schallert",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "mongoose": "^4.11.9"
+  }
+}

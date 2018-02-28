@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  
+  #synth
+    #buttons
+      span(nexus-ui="toggle", id="play")
+    #dials
+      span(nexus-ui="dial", id="wet")
+      span(nexus-ui="dial", id="dist")
+      span(nexus-ui="dial", id="speed", min=0, max=10)

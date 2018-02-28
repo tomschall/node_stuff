@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        
+        <script src="https://cdn.socket.io/socket.io-1.4.3.js"></script>
+        <script>
+            var socket = io.connect("http://localhost:8080/");
+            
+            socket.emit("welcomeServer", {
+                name: "Jannis"
+            });
+            
+            socket.on("welcome", function(message) {
+                console.log("message", message); 
+            });
+            
+            $(document).ready(function() {
+                socket.on("newMessage", function(message) {
+                    $("#chatList").append(
+                        $("<li></li>").text(message.username + ": " + message.message)
+                    );
+                });
+                $("#submit").click(function() {
+                    var username = $("#username").val();
+                    var message = $("#message").val();
+                    $("#chatList").append(
+                        $("<li></li>").text(username + ": " + message)
+                    );
+                    socket.emit("message", {
+                        username: username,
+                        message: message
+                    });
+                });
+            });
+            
+        </script>
+    </head>
+
+    <body>
+        <div class="container">
+            <ul id="chatList"></ul>
+            
+            <label>Benutzername:</label><input id="username" type="text" /><br />
+            <label>Nachricht:</label><input id="message" type="text" /><br />
+            <button id="submit" class="btn btn-primary">Absenden!</button>
+        </div>
+        Socket beispiel!
+    </body>
+</html>

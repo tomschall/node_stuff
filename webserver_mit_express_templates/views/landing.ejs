@@ -1,0 +1,20 @@
+<html>
+    <head><title>Hallo Welt</title></head>
+    <body>
+        <h1>EJS: <%= title %></h1>
+        <p>Hier kommt mein Text</p>
+        <p>Die Liste besteht aus <%= items.length %> Einträgen.</p>
+        <ul>
+            <% items.forEach(function(item) { %>
+                <li>
+                    <%= item %>    
+                </li>
+            <% }) %>        
+        </ul>
+        <div><% desc %></div>
+        <!-- EJS - Embedded Javascript Template Engine - 
+             Um kein Escaping auszuführen müssen wir den 
+             folgenden Marker verwenden -->
+        <!--<div><%- desc %></div>-->
+    </body>
+</html>

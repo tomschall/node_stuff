@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Angular JS</title>
+        <script type="text/javascript" src="/public/js/angular.js"></script>
+        <script type="text/javascript" src="/public/js/application.js"></script>
+    </head>
+    <body ng-app="app">
+        <div ng-controller="PostsController">
+            {{ title }}
+            <ul>
+                <li ng-repeat="post in posts">
+                    {{ post.title }} <br />
+                    {{ post.description }} <br /><br />
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>
